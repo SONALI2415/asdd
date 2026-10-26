@@ -1,0 +1,30 @@
+mkdir CICDProject
+cd CICDProject
+npm init -y
+npm install --save-dev jest
+
+notepad app.js
+notepad app.test.js
+
+npm pkg set scripts.test="jest"
+npm test
+
+echo node_modules/ > .gitignore
+git init
+git add .
+git commit -m "Initial commit"
+git branch -M main
+git remote add origin YOUR_URL
+git push -u origin main
+
+mkdir -p .github/workflows
+notepad .github/workflows/ci.yml
+
+git add .
+git commit -m "Added CI Pipeline"
+git push origin main
+
+notepad Jenkinsfile
+git add Jenkinsfile
+git commit -m "Added Jenkins Pipeline"
+git push origin main
